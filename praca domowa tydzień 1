@@ -1,0 +1,341 @@
+1. 
+Czy utworzona ilość testów jest wystarczająca – NIE
+Czy w projekcie znajdują się testy nadmiarowe: TAK
+przykłady:
+
+- "should allow me to add todo items (add 2 todos)" i "should append new items to the bottom of the list" – to można by połączyć
+
+- "should allow me to mark all items as completed",
+"should allow me to clear the complete state of all items"
+oraz
+"should allow me to mark items as complete",
+"should allow me to un-mark items as complete"
+
+- testy edycji mogłyby zostać scalone 
+"should allow me to edit an item", "should hide other controls when editing", 
+"should save edits on blur", "should trim entered text"
+
+- testy clear completed: "should display the correct text (Clear completed button)",
+"should remove completed items when clicked"
+
+- testy filtrowania: "should allow me to display active items",
+"should allow me to display completed items",
+"should allow me to display all items"
+
+Pytanie również czy zaznaczanie/odznaczanie hurtowo wszystkich pozycji powinno być sprawdzane jeśli tej opcji nie ma na froncie dla usera.
+
+2. Czy podane testy umożliwiają wykrycie bugów z Bugs.md:
+
+- bug z v2 "Nie działa oznaczenie zaznaczenia dla przycisku "Active". Nie pojawia się szara ramka." - powinien zostać wykryty przez test "should highlight the currently applied filter"
+(przy okazji - jeśli dobrze widzę to ramka zaznaczenia jest czerwona)
+
+- bug z v2 "* Nie działa zaznaczenie "completed" dla dodanego todo.
+Pomimo jego oznaczenia po przejściu pomiędzy filtrami "All", "Active", "Completed" pozycja zaznaczona wraca do poprzedniego stanu" – powinien zostać wykryty przez test "should allow me to display completed items"
+
+- bug z v3 "* Brak funkcjonalności: "Clear completed"" – powinien zostać wykryty przez test "should display the correct text (Clear completed button)" 
+(co prawda wykryje on tylko ze takiego tekstu nie ma na stronie, a nie że nie ma przycisku jeśli dobrze rozumiem, więc test wyłapie to "przypadkiem")
+
+3. Przypadki testowe:
+
+should allow me to add todo items (add 2 todos)
+
+ID 1 
+Tytuł: Dodawanie todo do listy
+Wersja: version-test, version-2, version-3
+Warunek wstępny: uruchomiona wersja programu (sprawdzić dodawanie dla wszystkich sekcji)
+Kroki reprodukcji: 
+1. Wpisz todo do pola tekstowego "What needs to be done"
+2. Naciśnij klawisz Enter.
+3. Jeżeli dodałeś todo będąc w sekcji "Completed", przejdź do sekcji "All"/"Active".
+Oczekiwany rezultat: todo pojawia się na liście.
+Warunki końcowe: todo widoczne na liście poniżej.
+Dane testowe: asddsass,desedr
+
+should clear text input field when an item is added
+
+ID 2
+Tytuł: Czyszczenie pola tekstowego po dodaniu todo do listy
+Wersja: version-test, version-2, version-3
+Warunek wstępny: uruchomiona wersja programu (sprawdzić dodawanie dla wszystkich sekcji)
+Kroki reprodukcji: 
+1. Wpisz todo do pola tekstowego "What needs to be done"
+2. Naciśnij klawisz Enter.
+Oczekiwany rezultat: wpisany tekst todo znika z pola tekstowego
+Warunki końcowe: puste pole tekstowe "What needs to be done", 
+Dane testowe: !1-+aswl
+
+should append new items to the bottom of the list
+
+ID 3
+Tytuł: Nowe todo po dodaniu powinny znajdować się na samym dole listy
+Wersja: version-test, version-2, version-3
+Warunek wstępny: uruchomiona wersja programu (sprawdzić dla sekcji "All" i "Active")
+Kroki reprodukcji: 
+1. Wpisz todo do pola tekstowego "What needs to be done"
+2. Naciśnij klawisz Enter.
+3. Powtórz kroki 1 i 2 kilka razy.
+Oczekiwany rezultat: wpisywane todo po kliknięciu Enter za każdym razem pojawia się na samym dole listy.
+Warunki końcowe: widoczna lista z todo uszeregowanymi od najstarszych do najnowszych (patrząc od góry listy)
+Dane testowe: asd, asdds, swdw, sdwadd
+
+should show #main and #footer when items added
+
+ID 4
+Tytuł: Pokazywanie listy zadań i stopki listy zadań po dodaniu todo do listy.
+Wersja: version-test, version-2, version-3
+Warunek wstępny: uruchomiona wersja programu (sprawdzić dla wszystkich sekcji)
+Kroki reprodukcji: 
+1. Wpisz todo do pola tekstowego "What needs to be done"
+2. Naciśnij klawisz Enter.
+Oczekiwany rezultat: lista zadań i stopka listy zadań są dalej widoczne na stronie po dodaniu todo do listy.
+Warunki końcowe: na stronie jest widoczna lista zadań i jej stopka
+Dane testowe: asdwwss
+
+should allow me to mark all items as completed
+
+ID 5
+Tytuł: Oznaczanie wszystkich todo jako completed
+Wersja: version-test, version-2, version-3
+Warunek wstępny: uruchomiona wersja programu (sprawdzić dla sekcji "All" i "Active"), dodane więcej niż jedno todo do listy
+Kroki reprodukcji: 
+1. Zaznacz okrągłe pole po lewej stronie todo.
+2. Powtórz akcję dla wszystkich todo na liście.
+3. Przejdź do sekcji "Completed"
+Oczekiwany rezultat: wszystkie todo powinny pojawić się w sekcji "Completed"
+Warunki końcowe: zaznaczone todo widoczne na liście "Completed"
+Dane testowe: ert.uryt, ervds
+
+should allow me to clear the complete state of all items
+
+ID 6
+Tytuł: Odznaczanie wszystkich todo jako completed.
+Wersja: version-test, version-2, version-3
+Warunek wstępny: uruchomiona wersja programu (sprawdzić dla sekcji "All" i "Completed"), dodane więcej niż jedno todo do listy
+Kroki reprodukcji: 
+1. Odznacz okrągłe pole po lewej stronie todo.
+2. Powtórz akcję dla wszystkich todo na liście.
+3. (Jeśli jesteś na sekcji "Completed") przejdź do sekcji "All"/"Active"
+Oczekiwany rezultat: wszystkie todo powinny zniknąć z sekcji "Completed" i pojawić się w sekcjach "All" i "Active"
+Warunki końcowe: niezaznaczone todo widoczne na listach sekcji "All" i "Active"
+Dane testowe: dwawd, ggfge
+
+complete all checkbox should update state when items are completed / cleared
+- nie ma takiego przycisku na froncie aplikacji, nie da się odtworzyć tego przypadka
+
+should allow me to mark items as complete – dubel z ID 5
+
+should allow me to un-mark items as complete – dubel z ID 6
+
+should allow me to edit an item
+
+ID 7
+Tytuł: Edycja todo
+Wersja: version-test, version-2, version-3
+Warunek wstępny: uruchomiona wersja programu (sprawdzić dla wszystkich sekcji), dodane przynajmniej jedno todo do listy
+Kroki reprodukcji: 
+1. Kliknij dwukrotnie na tekście danego todo z listy.
+2. Kiedy pole tekstowe todo stanie się edytowalne, zmień wpisany tekst .
+3. Naciśnij klawisz Enter/kliknij poza polem.
+Oczekiwany rezultat: zmiany zostają zapisane, todo jest widoczne na liście
+Warunki końcowe: zmienione todo na liście
+Dane testowe: afajfnv -> dvjnsv
+
+should hide other controls when editing
+
+ID 8
+Tytuł: Sprawdzenie czy podczas edycji todo znika okrągłe pole do zaznaczenia po lewej i nagłówek 
+Wersja: version-test, version-2, version-3
+Warunek wstępny: uruchomiona wersja programu (sprawdzić dla wszystkich sekcji), dodane przynajmniej jedno todo do listy
+Kroki reprodukcji: 
+1. Kliknij dwukrotnie na tekście danego todo z listy.
+Oczekiwany rezultat: okrągłe pole do zaznaczenia po lewej i nagłówek znikają na czas edycji
+Warunki końcowe: widać samo pole do edycji
+Dane testowe: deewe
+
+should save edits on blur – dubel z ID 7
+
+should trim entered text
+
+ID  9
+Tytuł: usuwanie spacji przed i po tekście edytowanego todo
+Wersja: version-test, version-2, version-3
+Warunek wstępny: uruchomiona wersja programu (sprawdzić dla wszystkich sekcji), dodane przynajmniej jedno todo do listy
+Kroki reprodukcji: 
+1. Kliknij dwukrotnie na tekście danego todo z listy.
+2. Dopisz spacje przed i po wyrazie/wyrazach danego todo.
+3. Naciśnij klawisz Enter/kliknij poza polem aby zapisać.
+Oczekiwany rezultat: nadmiarowe spacje przed i po wyrazie/wyrazach zostają usunięte przy zapisywaniu todo.
+Warunki końcowe: todo widoczne na liście bez nadmiarowych spacji.
+Dane testowe:  __dwasdw edf__  (podłoga to spacje)
+
+should remove the item if an empty text string was entered
+
+ID 10
+Tytuł: Usunięcie todo jeśli wprowadzono pusty ciąg znaków (np. same spacje)
+Wersja: version-test, version-2, version-3
+Warunek wstępny: uruchomiona wersja programu (sprawdzić dla wszystkich sekcji, potwierdzać na sekcji "All"), dodane przynajmniej jedno todo do listy.
+Kroki reprodukcji: 
+1. Kliknij dwukrotnie na tekście danego todo z listy.
+2. Wpisz same spacje zamiast tekstu podczas edycji.
+3. Naciśnij klawisz Enter/kliknij poza polem aby zapisać.
+Oczekiwany rezultat: puste todo zostaje usunięte z listy.
+Warunki końcowe: Lista nie zawiera edytowanego todo.
+Dane testowe: berkulsi
+
+should cancel edits on escape
+
+ID  11
+Tytuł: Kliknięcie Esc powinno cofać edycję todo
+Wersja: version-test, version-2, version-3
+Warunek wstępny: uruchomiona wersja programu (sprawdzić dla wszystkich sekcji), dodane przynajmniej jedno todo do listy.
+Kroki reprodukcji: 
+1. Kliknij dwukrotnie na tekście danego todo z listy.
+2. Dopisz dodatkowe znaki.
+3. Naciśnij klawisz Esc.
+Oczekiwany rezultat: wprowadzone zmiany zostają cofnięte, edycja zostaje zakończona.
+Warunki końcowe: widoczna lista z niezmienionym todo.
+Dane testowe: adfad -> asdwddd
+
+should display the current number of todo items
+
+ID 12
+Tytuł: Licznik w lewym dolnym rogu stopki podlicza poprawnie todo które nie są completed
+Wersja: version-test, version-2, version-3
+Warunek wstępny: uruchomiona wersja programu (sprawdzić dla sekcji "All" i "Active").
+Kroki reprodukcji: 
+1. Wpisz todo do pola tekstowego "What needs to be done"
+2. Naciśnij klawisz Enter.
+3. Następnie oznacz todo jako completed.
+Oczekiwany rezultat: wartość licznika zmienia się o +1 (...item(s) left) po kroku 2 i o -1 po kroku 3.
+Warunki końcowe: licznik odzwierciedla liczbę todo które nie są completed.
+Dane testowe: asdwds
+
+should display the correct text
+
+ID 13 
+Tytuł: Sprawdzenie czy przycisk "Clear completed" zawiera poprawny tekst i czy działa zgodnie z przeznaczeniem.
+Wersja: version-test, version-2, version-3
+Warunek wstępny: uruchomiona wersja programu (sprawdzić dla wszystkich sekcji), dodane przynamniej jedno todo w statusie completed
+Kroki reprodukcji: 
+1. Sprawdź czy napis na przycisku to "Clear completed"
+2. Kliknij na przycisk.
+3. Sprawdź na karcie "All"/"Completed" czy na liście zostały todo w statusie completed.
+Oczekiwany rezultat: Napis na przycisku to "Clear completed" i po kliknięciu go todo w statusie completed zostają usunięte z listy.
+Warunki końcowe: lista bez completed todo.
+Dane testowe: asdwdas
+
+should remove completed items when clicked – dubel ID 13
+
+should be hidden when there are no items that are completed 
+
+ID 14
+Tytuł: Przycisk "Clear completed" jest niewidoczny na stronie jeśli nie ma na liście todo w statusie completed.
+Wersja: version-test, version-2, version-3
+Warunek wstępny: uruchomiona wersja programu (sprawdzić dla sekcji "All"/"Completed"), brak todo w statusie completed
+Kroki reprodukcji: 
+1. Sprawdź prawy dolny róg listy.
+Oczekiwany rezultat: Przycisk "Clear completed" nie jest widoczny.
+Warunki końcowe: jak wyżej.
+Dane testowe: -
+
+should persist its data
+
+ID 15
+Tytuł: Lista todo nie powinna ulegać zmianom jeśli strona w przeglądarce jest przeładowywana lub cofana
+Wersja: version-test, version-2, version-3
+Warunek wstępny: uruchomiona wersja programu (sprawdzić dla wszystkich sekcji), dodane przynamniej jedno todo w statusie active i jedno w statusie completed
+Kroki reprodukcji: 
+1. Przeładuj stronę.
+2. Przejdź do kolejnej sekcji.
+3. Cofnij stronę.
+Oczekiwany rezultat: zarówno po przeładowaniu jak i po cofnięciu strony nie zmienia się liczba ani stan todos na liście.
+Warunki końcowe: lista pozostaje bez zmian niezależnie od powyższych czynności.
+Dane testowe: akfjba, adsvsdfvs
+
+should respect the back button – dubel z ID 15
+
+should allow me to display active items
+
+ID 16
+Tytuł: Sprawdzenie wyświetlania todos dla poszczególnych sekcji
+Wersja: version-test, version-2, version-3
+Warunek wstępny: uruchomiona wersja programu (sprawdzić dla wszystkich sekcji), dodane przynamniej jedno todo w statusie active i jedno w statusie completed
+Kroki reprodukcji: 
+1. Przejdź między poszczególnymi sekcjami ("All", "Active", "Completed")
+Oczekiwany rezultat: liczba todos w każdej sekcji powinna odpowiadać faktycznej liczbie todos w danym statusie (lub ich sumie dla sekcji "All")
+Warunki końcowe: liczba wyświetlanych todo w danej sekcji zgadza się z liczbą todos danego typu (lub ich sumą dla sekcji "All")
+Dane testowe: asdsws, vhdcxk
+
+should allow me to display completed items - dubel ID 16
+
+should allow me to display all items - - dubel ID 16
+
+should highlight the currently applied filter
+
+ID  17
+Tytuł: Ramka sekcji na której obecnie jest użytkownik powinna być podświetlona.
+Wersja: version-test, version-2, version-3
+Warunek wstępny: uruchomiona wersja programu (sprawdzić dla wszystkich sekcji), dodane przynamniej jedno todo w dowolnym statusie
+Kroki reprodukcji: 
+1. Przejdź między sekcjami "All", "Active", "Completed"
+Oczekiwany rezultat: Po przejściu do danej sekcji jej nazwa na dole aplikacji zostaje oznaczona ramką.
+Warunki końcowe: Każda sekcja po przejściu do niej jest oznaczona ramką wokół jej nazwy.
+Dane testowe: asfkjsv
+
+4. Przygotować minimum 3 do 5 przypadków testowych dodatkowych pokrywających inne (Alternatywne / Kreatywne) przypadki które nie zostały ujęte w formie testów it w projekcie automatyzacji testów.
+
+ID 1-EXTRA
+Tytuł: Sprawdzenie czy tekst zaznaczonego todo zostaje przekreślony
+Wersja: version-test, version-2, version-3
+Warunek wstępny: uruchomiona wersja programu (sprawdzić dla sekcji "All" i "Active" z późniejszym przełączeniem na "All" i "Completed"), todo dodane do listy.
+Kroki reprodukcji: 
+1. Zaznacz okrągłe pole po lewej stronie todo.
+Oczekiwany rezultat: tekst todo zostaje przekreślony. 
+Warunki końcowe: widoczne przekreślenie tekstu dodanego do listy todo. 
+Dane testowe: rffjvfbg
+
+ID 2-EXTRA
+Tytuł: Sprawdzenie czy przycisk "Clear completed" zniknie jeśli edytujemy zaznaczone todo samymi spacjami
+Wersja: version-test, version-2, version-3
+Warunek wstępny: uruchomiona wersja programu (sprawdzić dla sekcji "All" i "Completed"), dodane przynajmniej jedno todo w statusie completed na liście
+Kroki reprodukcji: 
+1. Edytuj zaznaczone todo klikając na nim dwukrotnie.
+2. Wpisz same spacje.
+3. Zatwierdź edycję Enterem lub klikając poza polem edycji.
+Oczekiwany rezultat: Todo znika z listy, przycisk "Clear completed" znika z prawego dolnego rogu listy.
+Warunki końcowe: Sekcja listy widoczna bez edytowanego todo i przycisku "Clear completed".
+Dane testowe: rffjvfbg
+
+ID 3-EXTRA
+Tytuł: Sprawdzenie czy po kliknięciu Back znika oznaczenie (ramka) sekcji na której byliśmy
+Wersja: version-test, version-2, version-3
+Warunek wstępny: uruchomiona wersja programu (dowolna sekcja), przynajmniej jedno todo dodane do listy, widoczna ramka oznaczenia na sekcji na której jest użytkownik
+Kroki reprodukcji: 
+1. Przejdź z sekcji na inną ("następną") sekcję.
+2. Użyj przycisku Back przeglądarki.
+Oczekiwany rezultat: Następuje powrót do pierwszej sekcji, ramka zaznaczenia znika z "następnej" sekcji i wraca na sekcję pierwszą
+Warunki końcowe: Użytkownik znajduje się na pierwszej sekcji, na stronie jest jedna ramka zaznaczenia – na sekcji na której obecnie jest użytkownik.
+Dane testowe: - 
+
+ID 4-EXTRA
+Tytuł: Sprawdzenie czy zamknięcie i ponowne otwarcie/przywrócenie strony zachowa wprowadzone todo na liście
+Wersja: version-test, version-2, version-3
+Warunek wstępny: uruchomiona wersja programu (dowolna sekcja), todo dodane do listy.
+Kroki reprodukcji: 
+1. Zamknij program (poprzez zamknięcie karty w przeglądarce).
+2. Przywróć zamkniętą stronę za pomocą opcji przeglądarki.
+Oczekiwany rezultat: program otwiera się ponownie bez problemów, todo dodane do listy nadal się na niej znajdują.
+Warunki końcowe: uruchomiona wersja programu, todo w dalszym ciągu znajdują się na liście.
+Dane testowe: -
+
+ID 5-EXTRA
+Tytuł: Sprawdzenie czy możliwe jest przełączanie się między nowo dodanymi todo oraz elementami aplikacji za pomocą klawisza Tab i Shift + Tab
+Wersja: version-test, version-2, version-3
+Warunek wstępny: uruchomiona wersja programu (sprawdzić dla wszystkich sekcji), dodane przynajmniej po jednym todo w statusie active i completed.
+Kroki reprodukcji: 
+1. Dodaj kilka todo do listy.
+2. Przełącz się między nimi przechodząc zaznaczeniem elementu klawiszem Tab od góry do dołu strony.
+3. Wróć na górę strony z jej dołu przełączając się klawiszem Shift + Tab.
+Oczekiwany rezultat: w obu przypadkach przełączania zaznaczenie nie pomija żadnego dodanego elementu todo na liście ani żadnego elementu aplikacji
+Warunki końcowe: -
+Dane testowe: asdcna, ajnvasd, ajdnadkdi
