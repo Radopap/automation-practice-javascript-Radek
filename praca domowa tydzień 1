@@ -285,16 +285,7 @@ Dane testowe: asfkjsv
 4. Przygotować minimum 3 do 5 przypadków testowych dodatkowych pokrywających inne (Alternatywne / Kreatywne) przypadki które nie zostały ujęte w formie testów it w projekcie automatyzacji testów.
 
 ID 1-EXTRA
-Tytuł: Sprawdzenie czy tekst zaznaczonego todo zostaje przekreślony
-Wersja: version-test, version-2, version-3
-Warunek wstępny: uruchomiona wersja programu (sprawdzić dla sekcji "All" i "Active" z późniejszym przełączeniem na "All" i "Completed"), todo dodane do listy.
-Kroki reprodukcji: 
-1. Zaznacz okrągłe pole po lewej stronie todo.
-Oczekiwany rezultat: tekst todo zostaje przekreślony. 
-Warunki końcowe: widoczne przekreślenie tekstu dodanego do listy todo. 
-Dane testowe: rffjvfbg
 
-ID 2-EXTRA
 Tytuł: Sprawdzenie czy przycisk "Clear completed" zniknie jeśli edytujemy zaznaczone todo samymi spacjami
 Wersja: version-test, version-2, version-3
 Warunek wstępny: uruchomiona wersja programu (sprawdzić dla sekcji "All" i "Completed"), dodane przynajmniej jedno todo w statusie completed na liście
@@ -306,29 +297,8 @@ Oczekiwany rezultat: Todo znika z listy, przycisk "Clear completed" znika z praw
 Warunki końcowe: Sekcja listy widoczna bez edytowanego todo i przycisku "Clear completed".
 Dane testowe: rffjvfbg
 
-ID 3-EXTRA
-Tytuł: Sprawdzenie czy po kliknięciu Back znika oznaczenie (ramka) sekcji na której byliśmy
-Wersja: version-test, version-2, version-3
-Warunek wstępny: uruchomiona wersja programu (dowolna sekcja), przynajmniej jedno todo dodane do listy, widoczna ramka oznaczenia na sekcji na której jest użytkownik
-Kroki reprodukcji: 
-1. Przejdź z sekcji na inną ("następną") sekcję.
-2. Użyj przycisku Back przeglądarki.
-Oczekiwany rezultat: Następuje powrót do pierwszej sekcji, ramka zaznaczenia znika z "następnej" sekcji i wraca na sekcję pierwszą
-Warunki końcowe: Użytkownik znajduje się na pierwszej sekcji, na stronie jest jedna ramka zaznaczenia – na sekcji na której obecnie jest użytkownik.
-Dane testowe: - 
+ID 2-EXTRA
 
-ID 4-EXTRA
-Tytuł: Sprawdzenie czy zamknięcie i ponowne otwarcie/przywrócenie strony zachowa wprowadzone todo na liście
-Wersja: version-test, version-2, version-3
-Warunek wstępny: uruchomiona wersja programu (dowolna sekcja), todo dodane do listy.
-Kroki reprodukcji: 
-1. Zamknij program (poprzez zamknięcie karty w przeglądarce).
-2. Przywróć zamkniętą stronę za pomocą opcji przeglądarki.
-Oczekiwany rezultat: program otwiera się ponownie bez problemów, todo dodane do listy nadal się na niej znajdują.
-Warunki końcowe: uruchomiona wersja programu, todo w dalszym ciągu znajdują się na liście.
-Dane testowe: -
-
-ID 5-EXTRA
 Tytuł: Sprawdzenie czy możliwe jest przełączanie się między nowo dodanymi todo oraz elementami aplikacji za pomocą klawisza Tab i Shift + Tab
 Wersja: version-test, version-2, version-3
 Warunek wstępny: uruchomiona wersja programu (sprawdzić dla wszystkich sekcji), dodane przynajmniej po jednym todo w statusie active i completed.
@@ -339,3 +309,25 @@ Kroki reprodukcji:
 Oczekiwany rezultat: w obu przypadkach przełączania zaznaczenie nie pomija żadnego dodanego elementu todo na liście ani żadnego elementu aplikacji
 Warunki końcowe: -
 Dane testowe: asdcna, ajnvasd, ajdnadkdi
+
+ID 3-EXTRA
+
+Tytuł: Sprawdzenie czy możliwe jest wklejenie obrazu do pola tekstowego
+Wersja: version-test, version-2, version-3
+Warunek wstępny: uruchomiona wersja programu (sprawdzić dla wszystkich sekcji), skopiowany obraz w schowku
+Kroki reprodukcji: 
+1. Spróbuj wkleić obraz do pola tekstowego "What needs to be done" (zarówno klikając na nim prawym przyciskiem myszy i wybierając "Wklej", jak również klikając na pole tekstowe i używając skrótu Ctrl + V)
+Oczekiwany rezultat: w obu przypadkach przełączania obraz nie zostaje wklejony do pola tekstowego.
+Warunki końcowe: strona w niezmienionej kondycji
+Dane testowe: -
+
+ID 4-EXTRA
+
+Tytuł: Sprawdzenie czy input pola tekstowego podlega sanityzacji
+Wersja: version-test, version-2, version-3
+Warunek wstępny: uruchomiona wersja programu (sprawdzić dla wszystkich sekcji)
+Kroki reprodukcji: 
+1. Spróbuj wkleić link lub złośliwy skrypt do pola tekstowego "What needs to be done" (zarówno klikając na nim prawym przyciskiem myszy i wybierając "Wklej", jak również klikając na pole tekstowe i używając skrótu Ctrl + V)
+Oczekiwany rezultat: w obu przypadkach tekst powinien zostać zsanityzowany i nie być aktywnym hiperłączem/nie wykonać się (jeśli chodzi o skrypt)
+Warunki końcowe: strona w niezmienionej kondycji
+Dane testowe: www.testerzy.pl; <'=" OR DROP DATABASE>

@@ -41,7 +41,7 @@ describe('TodoMVC - React', function () {
 
 				// exampleObj.false-data.falseWithName.one
 			});
-
+			TODO_ITEM_ONE = 'Restart the c0omput34@'
 			cy.get('.new-todo').type(TODO_ITEM_ONE).type('{enter}');
 
 			cy.get('.todo-list li').should('have.length', 1);
@@ -60,7 +60,8 @@ describe('TodoMVC - React', function () {
 
 		it('should allow me to add todo items', function () {
 			// create 1st todo
-			cy.get('.new-todo').type(TODO_ITEM_ONE).type('{enter}');
+			TODO_ITEM_ONE = 'Ą'
+			cy.get('.new-todo').type('TODO_ITEM_ONE').type('{enter}');
 
 			// make sure the 1st label contains the 1st todo text
 			cy.get('.todo-list li')
@@ -69,6 +70,7 @@ describe('TodoMVC - React', function () {
 				.should('contain', TODO_ITEM_ONE);
 
 			// create 2nd todo
+			TODO_ITEM_TWO = 'å:^ìÑSï|@LÈéÔ=¶ÈÇV¦c'
 			cy.get('.new-todo').type(TODO_ITEM_TWO).type('{enter}');
 
 			// make sure the 2nd label contains the 2nd todo text
@@ -90,6 +92,7 @@ describe('TodoMVC - React', function () {
 		});
 
 		it('should clear text input field when an item is added', function () {
+			TODO_ITEM_ONE = '"Òê[¿¢y`^É?Ø jãò%ùIun '
 			cy.get('.new-todo').type(TODO_ITEM_ONE).type('{enter}');
 
 			cy.get('.new-todo').should('have.text', '');
@@ -116,6 +119,7 @@ describe('TodoMVC - React', function () {
 		});
 
 		it('should show #main and #footer when items added', function () {
+			TODO_ITEM_ONE = ' '
 			cy.createTodo(TODO_ITEM_ONE);
 			cy.get('.main').should('be.visible');
 			cy.get('.footer').should('be.visible');
@@ -197,6 +201,25 @@ describe('TodoMVC - React', function () {
 			// our custom command 'createTodo'
 			//
 			// the return value is the <li> in the <ul.todos-list>
+			TODO_ITEM_ONE = 'www.testerzy.pl; <'=" OR DROP DATABASE>'
+			TODO_ITEM_TWO = '       
+			 .-.
+           [.-''-.,
+           |  //`~\)
+           (<| 0\0|>_
+           ";\  _"/ \\_ _,
+          __\|'._/_  \ '='-,
+         /\ \    || )_///_\>>
+        (  '._ T |\ | _/),-'
+         '.   '._.-' /'/ |
+         | '._   _.'`-.._/
+   snd   ,\ / '-' |/
+         [_/\-----j
+    _.--.__[_.--'_\__
+   /         `--'    '---._
+  /  '---.  -'. .'  _.--   '.
+  \_      '--.___ _;.-o     /
+    '.__ ___/______.__8----'
 			cy.createTodo(TODO_ITEM_ONE).as('firstTodo');
 			cy.createTodo(TODO_ITEM_TWO).as('secondTodo');
 
@@ -242,13 +265,29 @@ describe('TodoMVC - React', function () {
 			cy.get('@secondTodo')
 				.find('.edit')
 				.clear()
-				.type('buy some sausages')
+				.type('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at metus libero. Donec pharetra dui egestas dolor dictum vulputate. Donec nisi dui, auctor in porta at, ultricies a libero. Nulla id enim porttitor, condimentum ante et, condimentum nibh. Suspendisse rutrum diam a vehicula condimentum. Ut feugiat id sem eu tristique. Nulla facilisi. Mauris ornare massa orci, eu ultrices quam rhoncus eu.
+
+Nunc nec est ornare ex volutpat varius. Vestibulum gravida sit amet enim vel facilisis. Morbi faucibus felis sed tincidunt varius. Vivamus facilisis tincidunt ligula ac porta. Nunc sollicitudin efficitur nisi a fermentum. Aliquam vestibulum vel urna non commodo. Integer mauris urna, mattis ut pretium et, fringilla ac sapien. Pellentesque magna velit, euismod vel pharetra sed, faucibus at risus.
+
+Proin ullamcorper, lacus sit amet iaculis tristique, metus dui ornare libero, vulputate ornare mauris est a nisl. Nulla cursus mi nisi, sed elementum orci tincidunt sed. Phasellus in tempor nunc. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut accumsan eu purus ac finibus. Suspendisse convallis sem sit amet pharetra tristique. Donec id aliquam enim, ac cursus libero. Nam lobortis nibh sed convallis sollicitudin. Fusce est sem, iaculis in feugiat eu, feugiat nec arcu. Sed venenatis a ante ac rutrum. Proin cursus est ut leo dictum, pulvinar ullamcorper ex sollicitudin. Duis bibendum metus fringilla nibh hendrerit varius. Cras id tempor magna. Duis lacinia odio vel ligula lacinia viverra. Duis elementum orci tortor, at auctor nunc mattis a. Maecenas eu fringilla urna.
+
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce eu nunc non ipsum tempor mattis ut quis urna. Aliquam ullamcorper, sem id ornare iaculis, est odio ultricies sem, ornare porta purus orci pellentesque nibh. Ut fringilla pulvinar ex quis auctor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam id consectetur nibh. Morbi et quam in dui elementum dictum at et justo. Vestibulum nec dui diam. Etiam ac diam nibh. Maecenas euismod gravida lobortis. Donec non luctus felis. Pellentesque vitae libero arcu.
+
+Vivamus sit amet risus vel dolor vehicula rutrum et at ipsum. Sed pellentesque nulla nec velit dapibus, sed sodales augue posuere. Aenean blandit arcu nunc. Morbi sed eros in erat ornare tempus. Morbi ultrices congue ipsum, vel feugiat ligula. Integer ornare, velit vitae dapibus ultricies, velit est porta sem, non gravida tellus massa quis nulla. In hac habitasse platea dictumst. Praesent in tincidunt mauris.')
 				.type('{enter}');
 
 			// explicitly assert about the text value
 			cy.get('@todos').eq(0).should('contain', TODO_ITEM_ONE);
 
-			cy.get('@secondTodo').should('contain', 'buy some sausages');
+			cy.get('@secondTodo').should('contain', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at metus libero. Donec pharetra dui egestas dolor dictum vulputate. Donec nisi dui, auctor in porta at, ultricies a libero. Nulla id enim porttitor, condimentum ante et, condimentum nibh. Suspendisse rutrum diam a vehicula condimentum. Ut feugiat id sem eu tristique. Nulla facilisi. Mauris ornare massa orci, eu ultrices quam rhoncus eu.
+
+Nunc nec est ornare ex volutpat varius. Vestibulum gravida sit amet enim vel facilisis. Morbi faucibus felis sed tincidunt varius. Vivamus facilisis tincidunt ligula ac porta. Nunc sollicitudin efficitur nisi a fermentum. Aliquam vestibulum vel urna non commodo. Integer mauris urna, mattis ut pretium et, fringilla ac sapien. Pellentesque magna velit, euismod vel pharetra sed, faucibus at risus.
+
+Proin ullamcorper, lacus sit amet iaculis tristique, metus dui ornare libero, vulputate ornare mauris est a nisl. Nulla cursus mi nisi, sed elementum orci tincidunt sed. Phasellus in tempor nunc. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut accumsan eu purus ac finibus. Suspendisse convallis sem sit amet pharetra tristique. Donec id aliquam enim, ac cursus libero. Nam lobortis nibh sed convallis sollicitudin. Fusce est sem, iaculis in feugiat eu, feugiat nec arcu. Sed venenatis a ante ac rutrum. Proin cursus est ut leo dictum, pulvinar ullamcorper ex sollicitudin. Duis bibendum metus fringilla nibh hendrerit varius. Cras id tempor magna. Duis lacinia odio vel ligula lacinia viverra. Duis elementum orci tortor, at auctor nunc mattis a. Maecenas eu fringilla urna.
+
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce eu nunc non ipsum tempor mattis ut quis urna. Aliquam ullamcorper, sem id ornare iaculis, est odio ultricies sem, ornare porta purus orci pellentesque nibh. Ut fringilla pulvinar ex quis auctor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam id consectetur nibh. Morbi et quam in dui elementum dictum at et justo. Vestibulum nec dui diam. Etiam ac diam nibh. Maecenas euismod gravida lobortis. Donec non luctus felis. Pellentesque vitae libero arcu.
+
+Vivamus sit amet risus vel dolor vehicula rutrum et at ipsum. Sed pellentesque nulla nec velit dapibus, sed sodales augue posuere. Aenean blandit arcu nunc. Morbi sed eros in erat ornare tempus. Morbi ultrices congue ipsum, vel feugiat ligula. Integer ornare, velit vitae dapibus ultricies, velit est porta sem, non gravida tellus massa quis nulla. In hac habitasse platea dictumst. Praesent in tincidunt mauris.');
 			cy.get('@todos').eq(2).should('contain', TODO_ITEM_THREE);
 		});
 	});
@@ -275,7 +314,7 @@ describe('TodoMVC - React', function () {
 			cy.get('@secondTodo')
 				.find('.edit')
 				.clear()
-				.type('buy some sausages')
+				.type('Szczreamścz')
 				// we can just send the blur event directly
 				// to the input instead of having to click
 				// on another button on the page. though you
@@ -284,7 +323,7 @@ describe('TodoMVC - React', function () {
 
 			cy.get('@todos').eq(0).should('contain', TODO_ITEM_ONE);
 
-			cy.get('@secondTodo').should('contain', 'buy some sausages');
+			cy.get('@secondTodo').should('contain', 'Szczreamścz');
 			cy.get('@todos').eq(2).should('contain', TODO_ITEM_THREE);
 		});
 
@@ -294,12 +333,12 @@ describe('TodoMVC - React', function () {
 			cy.get('@secondTodo')
 				.find('.edit')
 				.clear()
-				.type('    buy some sausages    ')
+				.type('    remove kebab    ')
 				.type('{enter}');
 
 			cy.get('@todos').eq(0).should('contain', TODO_ITEM_ONE);
 
-			cy.get('@secondTodo').should('contain', 'buy some sausages');
+			cy.get('@secondTodo').should('contain', 'remove kebab');
 			cy.get('@todos').eq(2).should('contain', TODO_ITEM_THREE);
 		});
 
@@ -379,7 +418,8 @@ describe('TodoMVC - React', function () {
 					.should('contain', TODO_ITEM_TWO)
 					.and('not.have.class', 'completed');
 			}
-
+			TODO_ITEM_ONE = 'TODO_ITEM_TWO'
+			TODO_ITEM_TWO = 'TODO_ITEM_ONE'
 			cy.createTodo(TODO_ITEM_ONE).as('firstTodo');
 			cy.createTodo(TODO_ITEM_TWO).as('secondTodo');
 			cy.get('@firstTodo')
