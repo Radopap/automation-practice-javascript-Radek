@@ -1,11 +1,11 @@
 {
   "fixtures": {
     "ID_1-EXTRA": {
-      "     ": "fiveSpaces",
-      "          ": "tenSpacesOverLimit",
-      " ": "minNumberOfSpaces",
-      "\t\t\t": "tabsOnly",
-      "\n\n\n": "newLinesOnly"
+      "fiveSpaces": "     ",
+      "tenSpacesOverLimit": "          ",
+      "minNumberOfSpaces": " ",
+      "tabsOnly": "\t\t\t",
+      "newLinesOnly": "\n\n\n"
     },
     "ID_4-EXTRA": {
       "normalLink": "https://example.com",
