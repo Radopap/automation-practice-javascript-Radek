@@ -1,6 +1,6 @@
 # TODOS
 
-[TODOS LINK](https://http-server -c-1 -p 4700 "The best for automated testing of todo lists!").
+[TODOS LINK](http://127.0.0.1:4700 "The best for automated testing of todo lists!").
 
 (czy po 4700 powinna być wersja aplikacji?)
 
