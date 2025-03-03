@@ -12,7 +12,6 @@ This project serves the purpose of creating todo lists that can be later edited 
 - should allow to switch focus between todos and other elements in order
 - switches focus between todos and website elements without issues
 
-
 3. Sprawdzenie czy możliwe jest wklejenie obrazu do pola tekstowego/Checking if it is possible to paste an image into the text field.
 - checks if pasting different object than text (image) into the text field is allowed.
 - pasting content different than text is not possible
