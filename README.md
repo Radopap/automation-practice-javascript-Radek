@@ -2,15 +2,7 @@
 
 [TODOS LINK](http://127.0.0.1:4700 "The best for automated testing of todo lists!")
 
-
-
 This project serves the purpose of creating todo lists that can be later edited to show the overall progress of one's planned activities.
-
-3. New Todo
-    - Should allow me to add todo items
-    - adds items
-
-
 
 1. Checking if the "Clear completed" button will disappear if we edit ticked todo with spaces/Sprawdzenie czy przycisk "Clear completed" zniknie jeśli edytujemy zaznaczone todo samymi spacjami
 - should allow me to make the "Clear completed" button disappear 
