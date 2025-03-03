@@ -1,16 +1,32 @@
 # TODOS
 
-[TODOS LINK](http-server -c-1 -p 4700 "The best for automated testing of todo lists!").
+[TODOS LINK](https://http-server -c-1 -p 4700 "The best for automated testing of todo lists!").
 
 (czy po 4700 powinna być wersja aplikacji?)
 
 This project serves the purpose of creating todo lists that can be later edited to show the overall progress of one's planned activities.
 
-- Zgodnie ze składnią md: Listę tytułów przypadków własnych które dodaliście, np.:
-
 3. New Todo
     - Should allow me to add todo items
     - adds items
+
+
+
+1. Checking if the "Clear completed" button will disappear if we edit ticked todo with spaces/Sprawdzenie czy przycisk "Clear completed" zniknie jeśli edytujemy zaznaczone todo samymi spacjami
+- should allow me to make the "Clear completed" button disappear 
+- button disappears when todo is edited with spaces
+
+2. Sprawdzenie czy możliwe jest przełączanie się między nowo dodanymi todo oraz elementami aplikacji za pomocą klawisza Tab i Shift + Tab
+- 
+
+
+3. Sprawdzenie czy możliwe jest wklejenie obrazu do pola tekstowego
+- 
+
+
+4. Sprawdzenie czy input pola tekstowego podlega sanityzacji
+- 
+
 
 let fixture = {
   "fixtures": {
