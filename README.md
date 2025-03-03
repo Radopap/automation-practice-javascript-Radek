@@ -4,21 +4,22 @@
 
 This project serves the purpose of creating todo lists that can be later edited to show the overall progress of one's planned activities.
 
-1. Checking if the "Clear completed" button will disappear if we edit ticked todo with spaces/Sprawdzenie czy przycisk "Clear completed" zniknie jeśli edytujemy zaznaczone todo samymi spacjami
+1. Checking if the "Clear completed" button will disappear if we edit ticked todo with spaces/Sprawdzenie czy przycisk "Clear completed" zniknie jeśli edytujemy zaznaczone todo samymi spacjami.
 - should allow me to make the "Clear completed" button disappear 
 - button disappears when todo is edited with spaces
 
-2. Sprawdzenie czy możliwe jest przełączanie się między nowo dodanymi todo oraz elementami aplikacji za pomocą klawisza Tab i Shift + Tab
-- 
+2. Sprawdzenie czy możliwe jest przełączanie się między nowo dodanymi todo oraz elementami aplikacji za pomocą klawisza Tab i Shift + Tab/Checking if it is possible to switch between newly added todos and elements of the app using Tab and Shift+Tab.
+- should allow to switch focus between todos and other elements in order
+- switches focus between todos and website elements without issues
 
 
-3. Sprawdzenie czy możliwe jest wklejenie obrazu do pola tekstowego
-- 
+3. Sprawdzenie czy możliwe jest wklejenie obrazu do pola tekstowego/Checking if it is possible to paste an image into the text field.
+- checks if pasting different object than text (image) into the text field is allowed.
+- pasting content different than text is not possible
 
-
-4. Sprawdzenie czy input pola tekstowego podlega sanityzacji
-- 
-
+4. Sprawdzenie czy input pola tekstowego podlega sanityzacji/Checking if the text field input gets sanitized.
+- checks if scripts and other malicious links get sanitized before being posted as todo on a page
+- text input is sanitized.
 
 let fixture = {
   "fixtures": {
