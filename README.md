@@ -1,8 +1,8 @@
 # TODOS
 
-[TODOS LINK](http://127.0.0.1:4700 "The best for automated testing of todo lists!").
+[TODOS LINK](http://127.0.0.1:4700 "The best for automated testing of todo lists!")
 
-(czy po 4700 powinna być wersja aplikacji?)
+
 
 This project serves the purpose of creating todo lists that can be later edited to show the overall progress of one's planned activities.
 
