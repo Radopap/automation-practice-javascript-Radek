@@ -43,6 +43,21 @@ firstName.changeNameAddNameAndTwoWords();
 secondName.changeNameAddNameAndTwoWords();   
 thirdName.changeNameAddNameAndTwoWords();
 
+let imionaLosowe = ["HiPoLIt", "Anna", "mARIA", "Bartek", "Ewa"];
+
+function generujLosoweImie() {
+  let losowe = imionaLosowe[Math.floor(Math.random() * imionaLosowe.length)];
+  return new Imie(losowe);
+}
+
+const osobaA = generujLosoweImie();
+const osobaB = generujLosoweImie();
+const osobaC = generujLosoweImie();
+
+console.log(osobaA.name);
+console.log(osobaB.name);
+console.log(osobaC.name);
+
 //b. Stwórz dwie zmienne których wartością będzie liczba (let numberOne = 3; let numberTwo = 5;)
 //Wykorzystując poznane operatory w poleceniu console.log(), wskaż fragment kodu który sprawdzi wartości liczbowe z Twoich zmiennych w następujący sposób:
 
